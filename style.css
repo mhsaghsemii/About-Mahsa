@@ -28,6 +28,7 @@ p {
   line-height: 1.6;
   margin: 0 0 15px;
   padding: 0;
+  margin-bottom: 10px;
 }
 
 h1 {
@@ -46,6 +47,15 @@ h3 {
   line-height: 50px;
   text-transform: uppercase;
   margin: 0 0 15px;
+  text-transform: capitalize;
+}
+
+h5 {
+  color: var(--h1-color);
+  font-weight: 700;
+  line-height: 150%;
+  margin: 0 0 15px;
+  font-size: 1.25rem;
 }
 
 span {
@@ -70,9 +80,9 @@ header {
   }
 }
 
-/* ----------- */
-/* INDEX PAGE */
+/* MAIN STYLES */
 
+/* INDEX PAGE */
 .mainContainer {
   > .mainContent {
     display: flex;
@@ -80,7 +90,7 @@ header {
     justify-content: space-evenly;
 
     .leftPage {
-      > div > img {
+      > div.index-pic > img {
         margin-left: 20px;
         margin-top: -35px;
         width: 522px;
@@ -132,10 +142,68 @@ header {
     }
   }
 }
+/* ----------- */
+
+/* ABOUT PAGE */
+.leftPage {
+  .about-pic {
+    > img {
+      width: 420px;
+      height: 420px;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.85);
+    }
+  }
+}
+.about-header {
+  padding-bottom: 30px;
+}
+
+.aboutContent {
+  >.medias{
+    justify-content: flex-start;
+    /* margin-left: -800px; */
+  }
+
+  text-align: left;
+  margin-top: 30px;
+  h3 {
+    color: white;
+    text-transform: capitalize;
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    line-height: 150%;
+    margin: 0 0 15px;
+    font-size: 1.75rem;
+  }
+  p {
+    margin-bottom: 20px;
+  }
+  .personalInfo {
+    .info {
+      display: flex;
+      width: 677px;
+      justify-content: space-between;
+      > div {
+        span {
+          color: var(--p-color);
+          letter-spacing: 0.5px;
+        }
+        > ul {
+          display: grid;
+          > li {
+            padding-bottom: 20px;
+            span.ans {
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 /* PORTFOLIO PAGE */
-/* MAIN STYLES */
-
 .container {
   display: flex;
   justify-content: space-between;
@@ -169,11 +237,12 @@ header {
 
   section.mainContainer {
     padding: 60px 15px 70px 15px;
-    width: 1300px;
+    width: 1330px;
     height: 470px;
     background-color: var(--main-color);
     border-radius: 10px;
-    /* overflow: auto; */
+    overflow-y: scroll;
+    margin-left: -35px;
 
     .portfolioBtns {
       margin-top: 15px;
@@ -231,7 +300,7 @@ header {
             .resume:hover {
               /* padding: 141px 0; */
               opacity: 0.8;
-              transition: all .6s ease;
+              transition: all 0.6s ease;
             }
           }
         }
@@ -396,3 +465,119 @@ button:hover::after {
 }
 
 /* -------------- */
+.button {
+  --width: 140px;
+  --height: 40px;
+  --tooltip-height: 35px;
+  --tooltip-width: 90px;
+  --gap-between-tooltip-to-button: 18px;
+  --button-color: rgb(13, 11, 127);
+  --tooltip-color: #fff;
+  width: var(--width);
+  height: var(--height);
+  background: var(--button-color);
+  position: relative;
+  text-align: center;
+  border-radius: 5px;
+  font-family: "Arial";
+  transition: background 0.3s;
+  margin-top: 10px;
+  margin-left: -4px;
+}
+
+.button::before {
+  position: absolute;
+  content: attr(data-tooltip);
+  width: var(--tooltip-width);
+  height: var(--tooltip-height);
+  background-color: var(--tooltip-color);
+  font-size: 0.9rem;
+  color: #111;
+  border-radius: 0.25em;
+  line-height: var(--tooltip-height);
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+  left: calc(50% - var(--tooltip-width) / 2);
+}
+
+.button::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: var(--tooltip-color);
+  left: calc(50% - 10px);
+  bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+}
+
+.button::after,
+.button::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-wrapper,
+.text,
+.icon {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  color: #fff;
+}
+
+.text {
+  top: 0;
+}
+
+.text,
+.icon {
+  transition: top 0.5s;
+}
+
+.icon {
+  color: #fff;
+  top: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.button:hover {
+  background: rgb(20, 18, 144);
+}
+
+.button:hover .text {
+  top: -100%;
+}
+
+.button:hover .icon {
+  top: 0;
+}
+
+.button:hover:before,
+.button:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.button:hover:after {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+}
+
+.button:hover:before {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+}
