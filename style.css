@@ -92,8 +92,8 @@ header {
     .leftPage {
       > div.index-pic > img {
         margin-left: 20px;
-        margin-top: -35px;
-        width: 522px;
+        margin-top: -23px;
+        width: 530px;
         border-radius: 10px;
         box-shadow: 0 0 25px rgba(0, 0, 0, 0.85);
       }
@@ -160,7 +160,7 @@ header {
 }
 
 .aboutContent {
-  >.medias{
+  > .medias {
     justify-content: flex-start;
     /* margin-left: -800px; */
   }
@@ -241,7 +241,7 @@ header {
     height: 470px;
     background-color: var(--main-color);
     border-radius: 10px;
-    overflow-y: scroll;
+    overflow-y: clip;
     margin-left: -35px;
 
     .portfolioBtns {
@@ -269,7 +269,7 @@ header {
               height: 296px;
               position: absolute;
               width: 300px;
-              top: 385px;
+              top: 381px;
               padding: 13px 0;
               border-radius: 10px;
               opacity: 0;
